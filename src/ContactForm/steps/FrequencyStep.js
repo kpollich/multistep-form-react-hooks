@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 
-import { ContactFormContext } from "./ContactFormContext";
+import { Form, FormField } from "../../ui";
+import { ContactFormContext } from "../ContactFormContext";
 
-function FrequencyStep({ frequency }) {
+export function FrequencyStep({ frequency }) {
   const { dispatch } = useContext(ContactFormContext);
 
   return (
     <>
       <h1>How often should we contact you?</h1>
-      <form>
-        <div>
-          <label htmlFor="daily">Daily</label>
+      <Form>
+        <FormField label="Daily" name="daily">
           <input
             type="radio"
             id="daily"
@@ -21,10 +21,8 @@ function FrequencyStep({ frequency }) {
               dispatch({ type: "FREQUENCY_CHANGE", payload: e.target.value })
             }
           />
-        </div>
-        <div>
-          <label htmlFor="weekly">Weekly</label>
-
+        </FormField>
+        <FormField label="Weekly" name="weekly">
           <input
             type="radio"
             id="weekly"
@@ -35,10 +33,8 @@ function FrequencyStep({ frequency }) {
               dispatch({ type: "FREQUENCY_CHANGE", payload: e.target.value })
             }
           />
-        </div>
-        <div>
-          <label htmlFor="monthly">Monthly</label>
-
+        </FormField>
+        <FormField label="Daily" name="daily">
           <input
             type="radio"
             id="monthly"
@@ -49,10 +45,8 @@ function FrequencyStep({ frequency }) {
               dispatch({ type: "FREQUENCY_CHANGE", payload: e.target.value })
             }
           />
-        </div>
-      </form>
+        </FormField>
+      </Form>
     </>
   );
 }
-
-export default FrequencyStep;

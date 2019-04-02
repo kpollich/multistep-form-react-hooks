@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
-import { ContactFormContext } from "./ContactFormContext";
-import { Form, TextField } from "../ui";
+import { ContactFormContext } from "../ContactFormContext";
+import { Form, TextField } from "../../ui";
 
-function UserInfoStep({ firstName, lastName, email }) {
+export function UserInfoStep({ firstName, lastName, email }) {
   const { dispatch } = useContext(ContactFormContext);
 
   return (

@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 
-import { ContactFormContext } from "./ContactFormContext";
+import { Form, FormField } from "../../ui";
+import { ContactFormContext } from "../ContactFormContext";
 
-function CategoriesStep({ categories }) {
+export function CategoriesStep({ categories }) {
   const { dispatch } = useContext(ContactFormContext);
 
   const availableCategories = [
@@ -35,10 +36,9 @@ function CategoriesStep({ categories }) {
         <em>Check all that apply</em>
       </p>
 
-      <form>
+      <Form>
         {availableCategories.map(category => (
-          <div key={category}>
-            <label htmlFor={category}>{category}</label>
+          <FormField key={category} label={category} name={category}>
             <input
               type="checkbox"
               name={category}
@@ -47,11 +47,9 @@ function CategoriesStep({ categories }) {
               onChange={() => handleChange(category)}
               checked={categories.includes(category)}
             />
-          </div>
+          </FormField>
         ))}
-      </form>
+      </Form>
     </>
   );
 }
-
-export default CategoriesStep;

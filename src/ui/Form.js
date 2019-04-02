@@ -6,7 +6,7 @@ const StyledForm = styled.form`
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  width: 340px;
+  max-width: 340px;
 `;
 
 export function Form({ children, ...props }) {

@@ -1,32 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const Container = styled.div`
-  padding: 0.5rem;
-  margin: 1rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+import { FormField } from "./FormField";
 
-const Label = styled.label`
-  display: "block";
-  margin-right: 1rem;
-`;
-
-export function TextField({ label, ...props }) {
+export function TextField({ label, name, ...props }) {
   return (
-    <Container>
-      <Label htmlFor={name}>{label}</Label>
+    <FormField label={label} name={name}>
       <input type="text" {...props} />
-    </Container>
+    </FormField>
   );
 }
 
 TextField.propTypes = {
   label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.any,
-  onChange: PropTypes.func
+  name: PropTypes.string.isRequired
 };

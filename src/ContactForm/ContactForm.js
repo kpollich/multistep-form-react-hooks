@@ -1,10 +1,9 @@
 import React, { useState, useReducer } from "react";
+import styled from "styled-components";
 
-import UserInfoStep from "./UserInfoStep";
-import FrequencyStep from "./FrequencyStep";
-import CategoriesStep from "./CategoriesStep";
-
+import { UserInfoStep, FrequencyStep, CategoriesStep } from "./steps";
 import { ContactFormContext } from "./ContactFormContext";
+import { Container } from "../ui";
 
 function useFormProgress() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -52,6 +51,12 @@ function formReducer(state, action) {
       throw new Error();
   }
 }
+
+const NavButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 function ContactForm() {
   const [state, dispatch] = useReducer(formReducer, initialState);
@@ -101,30 +106,30 @@ function ContactForm() {
 
   return (
     <ContactFormContext.Provider value={{ dispatch }}>
-      <div className="App">
+      <Container>
         {steps[currentStep]}
 
-        {!isFirst && <button onClick={() => goBack()}>Go Back</button>}
+        <NavButtonContainer>
+          {!isFirst && <button onClick={() => goBack()}>Go Back</button>}
+          <button
+            type="submit"
+            onClick={e => {
+              e.preventDefault();
 
-        <button
-          type="submit"
-          onClick={e => {
-            e.preventDefault();
-
-            if (isLast) {
-              handleSubmit();
-            } else {
-              goForward();
-            }
-          }}
-        >
-          {isLast ? "Submit" : "Next"}
-        </button>
-
+              if (isLast) {
+                handleSubmit();
+              } else {
+                goForward();
+              }
+            }}
+          >
+            {isLast ? "Submit" : "Next"}
+          </button>
+        </NavButtonContainer>
         <div>
           Step {currentStep + 1} of {steps.length}
         </div>
-      </div>
+      </Container>
     </ContactFormContext.Provider>
   );
 }
