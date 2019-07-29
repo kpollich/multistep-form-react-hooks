@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { Form, FormField } from "../../ui";
-import { ContactFormContext } from "../ContactFormContext";
+import { useContactFormState } from "../ContactFormContext";
 
-export function FrequencyStep({ frequency }) {
-  const { dispatch } = useContext(ContactFormContext);
+export function FrequencyStep() {
+  const {
+    state: { frequency },
+    dispatch
+  } = useContactFormState();
 
   return (
     <>

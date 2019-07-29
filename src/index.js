@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
 
 import ContactForm from "./ContactForm/ContactForm";
+import { ContactFormProvider } from "./ContactForm/ContactFormContext";
 
 function App() {
   const GlobalStyles = createGlobalStyle`
@@ -14,10 +15,12 @@ function App() {
   `;
 
   return (
-    <div className="App">
-      <GlobalStyles />
-      <ContactForm />
-    </div>
+    <ContactFormProvider>
+      <div className="App">
+        <GlobalStyles />
+        <ContactForm />
+      </div>
+    </ContactFormProvider>
   );
 }
 

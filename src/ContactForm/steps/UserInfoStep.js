@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { ContactFormContext } from "../ContactFormContext";
+import { useContactFormState } from "../ContactFormContext";
 import { Form, TextField } from "../../ui";
 
-export function UserInfoStep({ firstName, lastName, email }) {
-  const { dispatch } = useContext(ContactFormContext);
+export function UserInfoStep() {
+  const {
+    state: { firstName, lastName, email },
+    dispatch
+  } = useContactFormState();
 
   return (
     <>

@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { Form, FormField } from "../../ui";
-import { ContactFormContext } from "../ContactFormContext";
+import { useContactFormState } from "../ContactFormContext";
 
-export function CategoriesStep({ categories }) {
-  const { dispatch } = useContext(ContactFormContext);
+export function CategoriesStep() {
+  const {
+    state: { categories },
+    dispatch
+  } = useContactFormState();
 
   const availableCategories = [
     "Blog Posts",
